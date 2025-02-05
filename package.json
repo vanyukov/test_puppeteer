@@ -1,0 +1,16 @@
+{
+  "name": "test_puppeteer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "run": "node ./src/index.js"
+  },
+  "author": "Kirill Vanyukov",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "pixelmatch": "^6.0.0",
+    "puppeteer": "^24.1.0"
+  },
+  "type": "module"
+}
