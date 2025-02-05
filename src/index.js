@@ -26,6 +26,9 @@ const getTextContent = async (page, selector)=>{
   });
   const page = await browser.newPage();
 
+  //Tracing
+  await page.tracing.start({path: './temp/0trace.json'});
+
   // Navigate the page to a URL
   await page.goto("https://zenit.win/");
 
@@ -92,7 +95,7 @@ const getTextContent = async (page, selector)=>{
   });
 
   //#endregion
-
+  await page.tracing.stop();
   await browser.close();
 })();
 
