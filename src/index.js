@@ -26,7 +26,7 @@ const getTextContent = async (page, selector)=>{
   });
   const page = await browser.newPage();
 
-  //Tracing
+  // Tracing
   await page.tracing.start({path: './temp/0trace.json'});
 
   // Navigate the page to a URL
@@ -85,6 +85,12 @@ const getTextContent = async (page, selector)=>{
   //#endregion
 
   //#region save res
+  await page.tracing.stop();
+
+  // Page.metrics
+  const metrics = await page.metrics()
+  addRes('Page.metrics', JSON.stringify(metrics)); 
+  
   const filePath = `${folderPath}/0res`;
   fs.writeFile(filePath, res, (err) => {
     if (err) {
@@ -95,7 +101,6 @@ const getTextContent = async (page, selector)=>{
   });
 
   //#endregion
-  await page.tracing.stop();
   await browser.close();
 })();
 
